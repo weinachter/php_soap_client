@@ -9,8 +9,10 @@ Sie müssen zuerst alle SOAP-Objekte durch den Code-Generator erstellen lassen.
 
 Starten Sie den Code-Generator per Shell:
 
+    ´´´
     shell> php cli/PlentymarketsSoapGenerator.cli.php
-
+    ´´´
+ 
 ## Datenbank
 Viele Beispiele benötigen eine Datenbank. Erstellen Sie daher eine MySQL-Datenbank.
 Tragen Sie die Logindaten in die Datei `config/db.inc.php` ein.
@@ -19,9 +21,9 @@ Legen Sie zur Ausführung der Beispiele alle Tabellen in der Datei `config/examp
 ## SOAP Call Test
 Nun können Sie einen API-Test-Aufruf starten:
 
-´´´bash
+    ´´´
     shell> php cli/PlentymarketsSoapExampleLoader.cli.php [ExampleName]
-´´´
+    ´´´
     
 ## SOAP Daemon
 Die wohl beste Möglichkeit, um Daten zwischen zwei System synchron zu halten, ist ein Daemon-Prozess. Also ein permanent laufender Prozess, welcher unterschiedliche Aktionen in einem fest definierten Intervall ausführt.
@@ -29,7 +31,7 @@ Weiterhin wäre dabei auch eine weitere Anforderung spielend einfach möglich: K
 
 Wir haben für Sie einen einfach zu pflegenden Daemon-Prozess entwickelt - starten:
 
-´´´bash
+´´´
     shell> php cli/PlentySoap.daemon.php
 ´´´
 
@@ -42,6 +44,6 @@ aufgebaut, damit hier sehr einfach eigene Generatoren erstellt werden können.
 
 Durch diesen Befehlt werden 50 Artikelstammdaten angelegt:
 
-´´´bash
+´´´
     shell> php cli/PlentyTestdataGenerator.cli.php type:item quantity:50 
 ´´´
