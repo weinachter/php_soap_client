@@ -155,9 +155,9 @@ class PlentymarketsSoapControllerGenerator
 			$withLogin = false;
 			
 			// ... get first arg type and first arg to use for a check of LoginInformation type
-			list ($firstType, $firstArg) = explode(" ", trim($argumentStrings[0]));
-			
-			if ($firstType == 'LoginInformation') 
+            		$firsts = explode(" ", trim($argumentStrings[0]));
+			// additional check to prevent undefined index warnings
+			if (count($firsts) == 2 && $firsts[0] == 'LoginInformation')
 			{
 				$withLogin = true;
 			}
@@ -231,7 +231,11 @@ class PlentymarketsSoapControllerGenerator
 	{
 		foreach(array_keys($args) as $a) 
 		{
-			list($type, $args[$a]) = explode(" ",trim($args[$a]));
+			$exploded_data = explode(" ",trim($args[$a]));
+			// additional check to prevent undefined index warnings
+			if(count($exploded_data) >= 2 ) {
+				list($type, $args[$a]) = $exploded_data;
+			}
 		}
 		
 		if ($withLogin===true) 
