@@ -6,21 +6,21 @@
  * 
  * please enter your own wsdl url
  */
-define('WSDL_URL', 'http://plenty-soap-cluster.plenty-test.de/plenty/api/soap/version110/?xml');
+define('WSDL_URL', 'http://relaxdays.plentymarkets-x1.com/plenty/api/soap/version115/?xml');
 
 /*
  * soap user name
  * 
  * please enter your own user
  */
-define('SOAP_USER', 'soap_client_test');
+define('SOAP_USER', 'relaxdays_client');
 
 /*
  * soap password
  * 
  * please enter your own password
  */
-define('SOAP_PASSWORD', '!Your_PWD!:');
+define('SOAP_PASSWORD', 'Omega42+');
 
 
 /*

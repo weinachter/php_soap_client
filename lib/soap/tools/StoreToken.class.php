@@ -24,7 +24,7 @@ class StoreToken
 	 * 
 	 * @var boolean
 	 */
-	const SAVE_TOKEN_IN_DB = true;
+	const SAVE_TOKEN_IN_DB = false;
 	
 	/**
 	 *

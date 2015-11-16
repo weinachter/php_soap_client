@@ -27,7 +27,7 @@ class PlentyItemDataPushImage extends PlentySoapCall
 	
 	/**
 	 * 
-	 * @var PlentySoapRequest_AddItemsImage
+	 * @var PlentySoapRequest_SetItemImages
 	 */
 	private $oPlentySoapRequest_AddItemsImage = null;
 
@@ -81,13 +81,12 @@ class PlentyItemDataPushImage extends PlentySoapCall
 					$oPlentySoapObject_FileBase64Encoded->FileEnding = $fileEnding;
 					$oPlentySoapObject_FileBase64Encoded->FileName = 'plentymarkets_testimage_'.$this->itemId.'_'.$i;
 					
-					$oPlentySoapObject_ItemImage = new PlentySoapObject_ItemImage();
-					$oPlentySoapObject_ItemImage->ImageData = $oPlentySoapObject_FileBase64Encoded;
-					$oPlentySoapObject_ItemImage->Availability = 1;
+					$oPlentySoapObject_ItemImage = new PlentySoapRequestObject_SetItemImagesImage();
+					$oPlentySoapObject_ItemImage->ImageFileData = $oPlentySoapObject_FileBase64Encoded;
 					$oPlentySoapObject_ItemImage->Position = ($i-1);
 						
-					$this->oPlentySoapRequest_AddItemsImage = new PlentySoapRequest_AddItemsImage();
-					$this->oPlentySoapRequest_AddItemsImage->Image = $oPlentySoapObject_ItemImage;
+					$this->oPlentySoapRequest_AddItemsImage = new PlentySoapRequest_SetItemImages();
+					$this->oPlentySoapRequest_AddItemsImage->Images[] = $oPlentySoapObject_ItemImage;
 					$this->oPlentySoapRequest_AddItemsImage->ItemID = $this->itemId;
 					
 					$this->execute();
@@ -107,7 +106,7 @@ class PlentyItemDataPushImage extends PlentySoapCall
 	
 	public function execute()
 	{
-		if(!($this->oPlentySoapRequest_AddItemsImage instanceof PlentySoapRequest_AddItemsImage))
+		if(!($this->oPlentySoapRequest_AddItemsImage instanceof PlentySoapRequest_SetItemImages))
 		{
 			$this->getLogger()->crit(__FUNCTION__.' $this->oPlentySoapRequest_AddItemsImage is not an instance of PlentySoapRequest_AddItemsImage');
 			return ;	
@@ -118,7 +117,7 @@ class PlentyItemDataPushImage extends PlentySoapCall
 			/*
 			 * do soap call
 			 */
-			$response	=	$this->getPlentySoap()->AddItemsImage($this->oPlentySoapRequest_AddItemsImage);
+			$response	=	$this->getPlentySoap()->SetItemImages($this->oPlentySoapRequest_AddItemsImage);
 				
 			/*
 			 * check soap response

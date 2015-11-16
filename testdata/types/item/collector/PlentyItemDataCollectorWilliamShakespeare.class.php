@@ -246,10 +246,14 @@ class PlentyItemDataCollectorWilliamShakespeare
 			 * push category
 			 */
 			$plentySoapObject_ItemCategory = new PlentySoapObject_ItemCategory();
-			$plentySoapObject_ItemCategory->ItemCategoryPath = $categoryId.';;;;;';
-			
-			$plentySoapObject_AddItemsBaseItemBase = new PlentySoapObject_AddItemsBaseItemBase();
-			$plentySoapObject_AddItemsBaseItemBase->Texts = $plentySoapObject_ItemTexts;
+//			$plentySoapObject_ItemCategory->ItemCategoryPath = $categoryId.';;;;;';
+//			$plentySoapObject_ItemCategory->ItemCategoryPath = $categoryId;
+			$plentySoapObject_ItemCategory->ItemCategoryID = $categoryId;
+
+//			$plentySoapObject_AddItemsBaseItemBase = new PlentySoapObject_AddItemsBaseItemBase();
+			$plentySoapObject_AddItemsBaseItemBase = new PlentySoapObject_SetItemsBaseItemBase();
+//			$plentySoapObject_AddItemsBaseItemBase->Texts = $plentySoapObject_ItemTexts;
+			$plentySoapObject_AddItemsBaseItemBase->Texts[] = $plentySoapObject_ItemTexts;
 			/*
 			 * category is a list so add as an array
 			 */

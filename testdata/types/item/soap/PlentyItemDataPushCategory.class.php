@@ -48,14 +48,16 @@ class PlentyItemDataPushCategory extends PlentySoapCall
 	{
 		try
 		{
-			$oPlentySoapRequest_GetItemCategoryCatalogBase = new PlentySoapRequest_GetItemCategoryCatalogBase();
-			$oPlentySoapRequest_GetItemCategoryCatalogBase->Level = 1;
+//			$oPlentySoapRequest_GetItemCategoryCatalogBase = new PlentySoapRequest_GetItemCategoryCatalogBase();
+			$oPlentySoapRequest_GetItemCategoryCatalogBase = new PlentySoapRequest_GetItemCategoryCatalog();
+//			$oPlentySoapRequest_GetItemCategoryCatalogBase->Level = 1;
 			$oPlentySoapRequest_GetItemCategoryCatalogBase->Lang = $this->lang;
 
 			/*
 			 * do soap call
 			 */
-			$response	=	$this->getPlentySoap()->GetItemCategoryCatalogBase($oPlentySoapRequest_GetItemCategoryCatalogBase);
+//			$response	=	$this->getPlentySoap()->GetItemCategoryCatalogBase($oPlentySoapRequest_GetItemCategoryCatalogBase);
+			$response	=	$this->getPlentySoap()->GetItemCategoryCatalog($oPlentySoapRequest_GetItemCategoryCatalogBase);
 
 			/*
 			 * check soap response
@@ -83,7 +85,7 @@ class PlentyItemDataPushCategory extends PlentySoapCall
 	/**
 	 * Parse the response
 	 *
-	 * @param PlentySoapResponse_GetItemCategoryCatalogBase $response
+	 * @param PlentySoapResponse_GetItemCategoryCatalog $response
 	 */
 	private function parseResponse($response)
 	{
@@ -126,15 +128,22 @@ class PlentyItemDataPushCategory extends PlentySoapCall
 	{
 		try
 		{
-			$oPlentySoapRequest_AddItemCategory = new PlentySoapRequest_AddItemCategory();
-			$oPlentySoapRequest_AddItemCategory->Lang = $this->lang;
-			$oPlentySoapRequest_AddItemCategory->Level = 1;
-			$oPlentySoapRequest_AddItemCategory->Name = $name;
+			$oPlentySoapRequest_AddItemCategory = new PlentySoapRequest_SetItemCategory();
+//			$oPlentySoapRequest_AddItemCategory = new PlentySoapRequest_AddItemCategory();
+//			$oPlentySoapRequest_AddItemCategory->Lang = $this->lang;
+//			$oPlentySoapRequest_AddItemCategory->Level = 1;
+//			$oPlentySoapRequest_AddItemCategory->Name = $name;
+
+			$category = new PlentySoapObject_ItemCategory();
+			$category->ItemCategoryLevel = 1;
+			$category->ItemCategoryPathNames = $name;
+			$oPlentySoapRequest_AddItemCategory->SetItemCategory[] = $category;
 
 			/*
 			 * do soap call
 			*/
-			$response	=	$this->getPlentySoap()->AddItemCategory($oPlentySoapRequest_AddItemCategory);
+//			$response	=	$this->getPlentySoap()->AddItemCategory($oPlentySoapRequest_AddItemCategory);
+			$response	=	$this->getPlentySoap()->SetItemCategory($oPlentySoapRequest_AddItemCategory);
 
 			/*
 			 * check soap response

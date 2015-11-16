@@ -16,7 +16,7 @@ class PlentyItemDataPushItems extends PlentySoapCall
 {
 	/**
 	 *
-	 * @var PlentySoapRequest_AddItemsBase
+	 * @var PlentySoapRequest_SetItemsBase
 	 */
 	private $plentySoapRequest_AddItemsBase = null;
 
@@ -64,11 +64,12 @@ class PlentyItemDataPushItems extends PlentySoapCall
 	/**
 	 * push items to api
 	 *
-	 * @param unknown $itemList array of PlentySoapObject_AddItemsBaseItemBase objects
+	 * @param mixed $itemList array of PlentySoapObject_SetItemsBaseItemBase objects
 	 */
 	public function pushItems($itemList)
 	{
-		$this->plentySoapRequest_AddItemsBase = new PlentySoapRequest_AddItemsBase();
+		$this->plentySoapRequest_AddItemsBase = new PlentySoapRequest_SetItemsBase();
+//		$this->plentySoapRequest_AddItemsBase = new PlentySoapRequest_AddItemsBase();
 
 		if(is_array($itemList))
 		{
@@ -77,7 +78,8 @@ class PlentyItemDataPushItems extends PlentySoapCall
 			 */
 			foreach($itemList as $item)
 			{
-				if($item instanceof PlentySoapObject_AddItemsBaseItemBase)
+				if($item instanceof PlentySoapObject_SetItemsBaseItemBase)
+//				if($item instanceof PlentySoapObject_AddItemsBaseItemBase)
 				{
 					$c = count($this->plentySoapRequest_AddItemsBase->BaseItems);
 
@@ -129,7 +131,8 @@ class PlentyItemDataPushItems extends PlentySoapCall
 			/*
 			 * do soap call
 			 */
-			$response	=	$this->getPlentySoap()->AddItemsBase($this->plentySoapRequest_AddItemsBase);
+			$response	=	$this->getPlentySoap()->SetItemsBase($this->plentySoapRequest_AddItemsBase);
+//			$response	=	$this->getPlentySoap()->AddItemsBase($this->plentySoapRequest_AddItemsBase);
 
 			/*
 			 * check soap response

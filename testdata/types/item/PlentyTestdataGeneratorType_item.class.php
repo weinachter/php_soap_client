@@ -94,9 +94,11 @@ class PlentyTestdataGeneratorType_item extends PlentyTestdataGeneratorTypeBase
 			{
 				$item = $this->itemList[$i];
 				
-				if($item instanceof PlentySoapObject_AddItemsBaseItemBase)
+//				if($item instanceof PlentySoapObject_AddItemsBaseItemBase)
+				if($item instanceof PlentySoapObject_SetItemsBaseItemBase)
 				{
-					$id = $this->generateExternalItemID($item->Texts->Name.' '.$item->Texts->LongDescription, 8);
+//					$id = $this->generateExternalItemID($item->Texts->Name.' '.$item->Texts->LongDescription, 8);
+					$id = $this->generateExternalItemID($item->Texts[0]->Name.' '.$item->Texts[0]->LongDescription, 8);
 					$item->ExternalItemID = $id;
 					$item->ItemNo = $id;
 					$item->Published = $this->generateTimestampInThePast();

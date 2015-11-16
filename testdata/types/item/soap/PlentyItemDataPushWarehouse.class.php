@@ -84,7 +84,8 @@ class PlentyItemDataPushWarehouse extends PlentySoapCall
 			 */
 			foreach ($response->WarehouseList->item as $warehouse)
 			{
-				if($warehouse->item->Type==0)
+				if($warehouse->Type==0)
+//				if($warehouse->item->Type==0)
 				{
 					$this->warehouseList[$warehouse->Name] = $warehouse->WarehouseID;
 				}

@@ -1,8 +1,13 @@
 <?php
-/*
- * this file is used to store a soap token
- * by default a soap token will be saved in an datebase table
- * look at lib/soap/tools/StoreToken.class.php
- * 
- */
+
+// generated Mon, 16 Nov 2015 20:41:01 +0100
+
+$token = array (
+  'relaxdays_client' => 
+  array (
+    'inserted' => 1447628400,
+    'usertoken' => 'a13bd01ed900f4358970d1c33387ef42',
+    'userId' => 3,
+  ),
+);
 ?>
