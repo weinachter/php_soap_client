@@ -55,7 +55,8 @@ class PlentyItemDataCollectorImages
 
 		if(isset($content) && strlen($content))
 		{
-			preg_match_all('/href="(\/.*?\-[0-9]+\/)"/', $content, $result);
+			preg_match_all('/src=\"(\/[a-zA-Z0-9\/\-\_]*.jpg)\" class/', $content, $result);
+//			preg_match_all('/href="(\/.*?\-[0-9]+\/)"/', $content, $result);
 
 			if(isset($result[1]) && is_array($result[1]))
 			{
@@ -82,14 +83,15 @@ class PlentyItemDataCollectorImages
 
 		if(isset($content) && strlen($content))
 		{
-			preg_match('/src="(\/static\/.*?_150\.jpg)"/', $content, $result);
-
-			if(isset($result[1]) && strlen($result[1]))
-			{
-				$this->imageUrlList[] = $this->baseUrl . $result[1];
-
-				$this->getLogger()->debug(__FUNCTION__.' new image url found ' . $this->baseUrl . $result[1]);
-			}
+//			preg_match('/src="(\/static\/.*?_150\.jpg)"/', $content, $result);
+//
+//			if(isset($result[1]) && strlen($result[1]))
+//			{
+//				$this->imageUrlList[] = $this->baseUrl . $result[1];
+//				$this->getLogger()->debug(__FUNCTION__.' new image url found ' . $this->baseUrl . $result[1]);//
+//			}
+				$this->imageUrlList[] =  $url;
+				$this->getLogger()->debug(__FUNCTION__.' new image url found ' . $url);
 		}
 	}
 
